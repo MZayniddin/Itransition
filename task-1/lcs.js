@@ -1,0 +1,1 @@
+function f(...n){if(0==n.length)return"";function t(n,t){return -1!=n.indexOf(t)}let e="";for(let g=0;g<n[0].length;g++)for(let l=g+1;l<=n[0].length;l++){let o=n[0].substring(g,l);o.length>e.length&&n.every(n=>t(n,o))&&(e=o)}console.log(e)}f(...process.argv.slice(2));

@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "unzipper": "^0.10.14"
+  },
+  "name": "fire",
+  "version": "1.0.0",
+  "main": "calculateHash.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
