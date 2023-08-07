@@ -127,12 +127,10 @@ class RockPaperScissorsGame {
     const userMoveName = this.moves[moveIndex - 1];
     const computerMove =
       this.moves[Math.floor(Math.random() * this.moves.length)]; // Random computer move
-    const hmacValue = this.hmacGenerator.generateHMAC(userMoveName);
 
     console.log(`Your move: ${userMoveName}`);
     console.log(`Computer move: ${computerMove}`);
     console.log(this.determineWinner(userMoveName, computerMove));
-    console.log(`HMAC: ${hmacValue}`);
     console.log(`HMAC key: ${this.key.toString("hex").toUpperCase()}`);
   }
 
