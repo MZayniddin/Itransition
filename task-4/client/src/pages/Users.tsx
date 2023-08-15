@@ -29,7 +29,9 @@ const Users = () => {
   return (
     <div className="container mx-auto p-2">
       <div className="flex items-center mb-4 justify-between">
-        <h1 className="text-2xl font-bold">User Management</h1>
+        <h1 className="text-2xl font-bold">
+          Welcome {localStorage.getItem("user")}
+        </h1>
         <button
           onClick={logOut}
           className="flex items-center gap-1 text-white bg-blue-600 rounded-md py-2 px-4"
