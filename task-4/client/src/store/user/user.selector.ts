@@ -8,7 +8,7 @@ export const selectUsers = createSelector(
   (usersSlice) => usersSlice.users
 );
 
-export const isUsersLoading = createSelector(
+export const selectIsUserLoading = createSelector(
   [selectUserReducer],
   (userSlice) => userSlice.isLoading
 );

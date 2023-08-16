@@ -1,8 +1,17 @@
 import { AnyAction } from "redux";
 import { USER_AUTH_TYPES } from "./auth.types";
 import jwtDecode from "jwt-decode";
+import { UserData } from "../user/user.types";
 
-export const authReducer = (state = { authData: null }, action: AnyAction) => {
+export type AuthState = {
+  authData: UserData | null;
+};
+
+const INITIAL_STATE_AUTH: AuthState = {
+  authData: null,
+};
+
+export const authReducer = (state = INITIAL_STATE_AUTH, action: AnyAction) => {
   const { type, payload } = action;
 
   switch (type) {

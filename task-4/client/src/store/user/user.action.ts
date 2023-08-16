@@ -16,23 +16,29 @@ export const getUsers = () => async (dispatch: Dispatch) => {
 };
 
 export const blockUser =
-  (usersIdArray: number[] | string[], navigate) =>
+  (usersIdArray: number[] | string[], navigate: any) =>
   async (dispatch: Dispatch) => {
+    dispatch({ type: USER_ACTION_TYPES.USER_LOADING_START });
+
     usersIdArray.map(async (id) => {
       try {
         await api.blockUser(id);
         dispatch({ type: USER_ACTION_TYPES.BLOCK_USER, payload: id });
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
         alert(error.response?.data?.message);
         navigate("/auth");
       }
     });
+
+    dispatch({ type: USER_ACTION_TYPES.USER_LOADING_END });
   };
 
 export const unBlockUsers =
-  (usersIdArray: number[] | string[], navigate) =>
+  (usersIdArray: number[] | string[], navigate: any) =>
   async (dispatch: Dispatch) => {
+    dispatch({ type: USER_ACTION_TYPES.USER_LOADING_START });
+
     usersIdArray.map(async (id) => {
       try {
         await api.unBlockUser(id);
@@ -40,17 +46,21 @@ export const unBlockUsers =
           type: USER_ACTION_TYPES.UNBLOCK_USER,
           payload: id,
         });
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
         alert(error.response?.data?.message);
         navigate("/auth");
       }
     });
+
+    dispatch({ type: USER_ACTION_TYPES.USER_LOADING_END });
   };
 
 export const deleteUsers =
-  (usersIdArray: number[] | string[], navigate) =>
+  (usersIdArray: number[] | string[], navigate: any) =>
   async (dispatch: Dispatch) => {
+    dispatch({ type: USER_ACTION_TYPES.USER_LOADING_START });
+
     usersIdArray.map(async (id) => {
       try {
         await api.deleteUser(id);
@@ -58,10 +68,12 @@ export const deleteUsers =
           type: USER_ACTION_TYPES.DELETE_USER,
           payload: id,
         });
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
         alert(error.response?.data?.message);
         navigate("/auth");
       }
     });
+
+    dispatch({ type: USER_ACTION_TYPES.USER_LOADING_END });
   };

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FormDataType } from "../store/auth/auth.types";
 
-const API = axios.create({ baseURL: "http://localhost:3000" });
+const API = axios.create({ baseURL: "https://itransitontask4.onrender.com" });
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
