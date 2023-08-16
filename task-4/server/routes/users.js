@@ -11,8 +11,8 @@ import { checkUserIsActive } from "../middlewares/checkUserActive.js";
 const router = Router();
 
 router.get("/", getUsers);
-router.patch("/block/:userId", checkUserIsActive, blockUser);
-router.patch("/unblock/:userId", checkUserIsActive, unBlockUser);
-router.delete("/delete/:userId", checkUserIsActive, deleteUser);
+router.patch("/block", checkUserIsActive, blockUser);
+router.patch("/unblock", checkUserIsActive, unBlockUser);
+router.delete("/delete", checkUserIsActive, deleteUser);
 
 export default router;

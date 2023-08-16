@@ -4,7 +4,6 @@ import { Dispatch } from "redux";
 import { useNavigate } from "react-router-dom";
 
 import { getUsers } from "../store/user/user.action";
-
 import { selectUsers } from "../store/user/user.selector";
 
 import { UserData } from "../store/user/user.types";

@@ -36,13 +36,13 @@ export const signup = async (req, res) => {
     // CREATING NEW USER
     const newUser = (
       await pool.query(
-        "INSERT INTO users(displayName, email, password, last_login ,created_at) VALUES($1, $2, $3, $4, $5) RETURNING id, email, displayname, status",
+        "INSERT INTO users(displayName, email, password, last_login ,created_at) VALUES($1, $2, $3, $4, $5) RETURNING id, displayname, status",
         [displayName, email, hashedPwd, getCurrentDate(), getCurrentDate()]
       )
     ).rows[0];
 
     // SEND TOKEN
-    res.json({ token: tokenCreator(newUser) });
+    res.json({ token: tokenCreator(newUser), user: newUser.displayname });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -84,10 +84,10 @@ export const signin = async (req, res) => {
     res.json({
       token: tokenCreator({
         id: foundUser.id,
-        email: foundUser.email,
         displayname: foundUser.displayname,
         status: foundUser.status,
       }),
+      user: foundUser.displayname,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

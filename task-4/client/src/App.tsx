@@ -24,6 +24,7 @@ const App = () => {
 
   useEffect(() => {
     let decodedToken: MyToken | null = null;
+
     if (localStorage.getItem("token")) {
       decodedToken = jwtDecode(localStorage.getItem("token") as string);
     }
@@ -33,7 +34,7 @@ const App = () => {
       if (decodedToken?.exp * 1000 < new Date().getTime()) {
         dispatch({ type: "LOGOUT" });
       }
-    }
+    } else dispatch({ type: "LOGOUT" });
   }, []);
 
   return (

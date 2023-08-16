@@ -25,28 +25,28 @@ export const usersReducer = (
       return { ...state, isLoading: false };
     case USER_ACTION_TYPES.FETCH_ALL_USERS:
       return { ...state, users: payload };
-    case USER_ACTION_TYPES.BLOCK_USER:
+    case USER_ACTION_TYPES.UNBLOCK_USERS:
       return {
         ...state,
         users: state.users?.map((user) => {
-          if (user.id === payload) user.status = false;
+          if (payload.includes(user.id)) user.status = true;
 
           return user;
         }),
       };
-    case USER_ACTION_TYPES.UNBLOCK_USER:
+    case USER_ACTION_TYPES.BLOCK_USERS:
       return {
         ...state,
         users: state.users?.map((user) => {
-          if (user.id === payload) user.status = true;
+          if (payload.includes(user.id)) user.status = false;
 
           return user;
         }),
       };
-    case USER_ACTION_TYPES.DELETE_USER:
+    case USER_ACTION_TYPES.DELETE_USERS:
       return {
         ...state,
-        users: state.users?.filter((user) => user.id !== payload),
+        users: state.users?.filter((user) => !payload.includes(user.id)),
       };
 
     default:

@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import {
   blockUser,
   deleteUsers,
-  unBlockUsers,
+  unBlockUser,
 } from "../../store/user/user.action";
 
 import { selectIsUserLoading } from "../../store/user/user.selector";
@@ -25,6 +25,7 @@ type UserTableProps = {
 const UsersTable = ({ users }: UserTableProps) => {
   const dispatch: Dispatch<any> = useDispatch();
   const navigate = useNavigate();
+
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
   const [isCheckAll, setIsCheckAll] = useState(false);
 
@@ -57,7 +58,7 @@ const UsersTable = ({ users }: UserTableProps) => {
   };
 
   const handleUnblock = () => {
-    dispatch(unBlockUsers(selectedUsers, navigate));
+    dispatch(unBlockUser(selectedUsers, navigate));
     clearSelectedUsersState();
   };
 
@@ -140,7 +141,7 @@ const UsersTable = ({ users }: UserTableProps) => {
                 <input
                   type="checkbox"
                   onChange={handleSelectAll}
-                  checked={isCheckAll}
+                  checked={selectedUsers.length === users.length}
                 />
               </th>
               <th scope="col" className="px-6 py-3">
